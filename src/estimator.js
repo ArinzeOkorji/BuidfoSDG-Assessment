@@ -37,7 +37,11 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
   let hospitalBedsByRequestedTime;
   if (hospitalBedsFraction.toString().includes('.')) {
     [hospitalBedsByRequestedTime] = hospitalBedsFraction.toString().split('.');
-    hospitalBedsByRequestedTime = -Math.abs(hospitalBedsByRequestedTime);
+    if (hospitalBedsFraction.toString().includes('-')) {
+      hospitalBedsByRequestedTime = -Math.abs(hospitalBedsByRequestedTime);
+    } else {
+      hospitalBedsByRequestedTime = Math.abs(hospitalBedsByRequestedTime);
+    }
   } else {
     hospitalBedsByRequestedTime = hospitalBedsFraction;
   }
