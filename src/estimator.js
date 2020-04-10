@@ -116,7 +116,7 @@ const covid19ImpactEstimator = (data) => {
   impact.casesForICUByRequestedTime = getCasesForICUByRequestedTime(
     data.infectionsByRequestedTime
   );
-  impact.casesForICUByRequestedTime = getCasesForVentilatorsByRequestedTime(
+  impact.casesForVentilatorsByRequestedTime = getCasesForVentilatorsByRequestedTime(
     data.infectionsByRequestedTime
   );
   impact.dollarsInFlight = getDollarsInFlight(data.infectionsByRequestedTime,
@@ -126,7 +126,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForICUByRequestedTime = getCasesForICUByRequestedTime(
     data.infectionsByRequestedTime
   );
-  severeImpact.casesForICUByRequestedTime = getCasesForVentilatorsByRequestedTime(
+  severeImpact.casesForVentilatorsByRequestedTime = getCasesForVentilatorsByRequestedTime(
     data.infectionsByRequestedTime
   );
   severeImpact.dollarsInFlight = getDollarsInFlight(data.infectionsByRequestedTime,
