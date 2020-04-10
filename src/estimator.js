@@ -51,24 +51,26 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
 
 const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
   const casesForICUFraction = infectionsByRequestedTime * (5 / 100);
-  let casesForICUByRequestedTime;
+  /* let casesForICUByRequestedTime;
   if (casesForICUFraction.toString().includes('.')) {
     [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
   } else {
     casesForICUByRequestedTime = casesForICUFraction;
-  }
-  return casesForICUByRequestedTime;
+  } */
+  // return casesForICUByRequestedTime;
+  return casesForICUFraction;
 };
 
 const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   const casesForVentilatorsFraction = infectionsByRequestedTime * (2 / 100);
-  let casesForVentilatorsByRequestedTime;
+  /* let casesForVentilatorsByRequestedTime;
   if (casesForVentilatorsFraction.toString().includes('.')) {
     [casesForVentilatorsByRequestedTime] = casesForVentilatorsFraction.toString().split('.');
   } else {
     casesForVentilatorsByRequestedTime = casesForVentilatorsFraction;
-  }
-  return casesForVentilatorsByRequestedTime;
+  } */
+  // return casesForVentilatorsByRequestedTime;
+  return casesForVentilatorsFraction;
 };
 
 const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
