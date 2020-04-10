@@ -1,5 +1,11 @@
 const getInfectionsByRequestedTime = (currentlyInfected, days) => {
-  const power = Math.floor(days / 3);
+  const powerDivision = (days / 3);
+  let power;
+  if (powerDivision.toString().includes('.')) {
+    [power] = powerDivision.toString().split('.');
+  } else {
+    power = powerDivision;
+  }
 
   const infectionsByRequestedTime = currentlyInfected * (2 ** power);
   return infectionsByRequestedTime;
