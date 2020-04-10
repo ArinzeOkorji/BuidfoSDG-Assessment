@@ -25,8 +25,9 @@ const getSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
   return severeCasesByRequestedTime;
 };
 
-const getHospitalBedsByRequestedTime = (totalHospitalBeds) => {
-  const hospitalBedsByRequestedTime = totalHospitalBeds * (35 / 100);
+const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequestedTime) => {
+  const hospitalBedsForSevereCases = totalHospitalBeds * (35 / 100);
+  const hospitalBedsByRequestedTime = hospitalBedsForSevereCases - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 };
 
@@ -53,7 +54,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime
   );
   impact.hospitalBedsByRequestedTime = getHospitalBedsByRequestedTime(
-    data.totalHospitalBeds
+    data.totalHospitalBeds, data.severeCasesByRequestedTime
   );
 
 
@@ -61,7 +62,7 @@ const covid19ImpactEstimator = (data) => {
     severeImpact.infectionsByRequestedTime
   );
   severeImpact.hospitalBedsByRequestedTime = getHospitalBedsByRequestedTime(
-    data.totalHospitalBeds
+    data.totalHospitalBeds, data.severeCasesByRequestedTime
   );
 
   return {
