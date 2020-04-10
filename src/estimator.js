@@ -1,5 +1,6 @@
 const getInfectionsByRequestedTime = (currentlyInfected, days) => {
   const power = Math.floor(days / 3);
+
   const infectionsByRequestedTime = currentlyInfected * (2 ** power);
   return infectionsByRequestedTime;
 };
