@@ -51,35 +51,45 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
 
 const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
   const casesForICUFraction = infectionsByRequestedTime * (5 / 100);
-  /* let casesForICUByRequestedTime;
+  let casesForICUByRequestedTime;
   if (casesForICUFraction.toString().includes('.')) {
     [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
   } else {
     casesForICUByRequestedTime = casesForICUFraction;
-  } */
-  // return casesForICUByRequestedTime;
-  return casesForICUFraction;
+  }
+  // console.log('ICUs - ', casesForICUByRequestedTime);
+  return casesForICUByRequestedTime;
+  // return casesForICUFraction;
 };
 
 const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   const casesForVentilatorsFraction = infectionsByRequestedTime * (2 / 100);
-  /* let casesForVentilatorsByRequestedTime;
+  let casesForVentilatorsByRequestedTime;
   if (casesForVentilatorsFraction.toString().includes('.')) {
     [casesForVentilatorsByRequestedTime] = casesForVentilatorsFraction.toString().split('.');
   } else {
     casesForVentilatorsByRequestedTime = casesForVentilatorsFraction;
-  } */
-  // return casesForVentilatorsByRequestedTime;
-  return casesForVentilatorsFraction;
+  }
+  // console.log('Ventilators - ', casesForVentilatorsByRequestedTime);
+  return casesForVentilatorsByRequestedTime;
+  // return casesForVentilatorsFraction;
 };
 
 const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   averageDailyIncomePopulation, periodType, timeToElapse) => {
   const numberOfDays = getNumberOfDays(periodType, timeToElapse);
 
-  const dollarsInFlight = (
+  let dollarsInFlight = (
     infectionsByRequestedTime * averageDailyIncomePopulation
   ) * averageDailyIncomeInUSD * numberOfDays;
+
+  if (dollarsInFlight.toString().includes('.')) {
+    const multiplier = 10 ** 1;
+    dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
+  }
+
+  // console.log('Dollars - ', dollarsInFlight);
+
   return dollarsInFlight;
 };
 
@@ -87,14 +97,14 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   region: {
     name: 'Africa',
     avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
+    avgDailyIncomeInUSD: 4,
+    avgDailyIncomePopulation: 0.73
   },
   periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
+  timeToElapse: 38,
+  reportedCases: 2747,
+  population: 92931687,
+  totalHospitalBeds: 678874
 }; */
 
 const covid19ImpactEstimator = (data) => {
