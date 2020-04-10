@@ -115,7 +115,7 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   } */
   // console.log('Dollars - ', dollarsInFlight);
 
-  return dollarsInFlight * 100;
+  return dollarsInFlight;
 };
 
 /* const mockData = {
