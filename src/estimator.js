@@ -91,7 +91,14 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   if (dollarsInFlight.toString().includes('.')) {
     const multiplier = 10 ** 1;
     dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
-    [dollarsInFlight] = dollarsInFlight.toString().split('.');
+    /* [dollarsInFlight] = dollarsInFlight.toString().split('.');
+
+    parseInt(dollarsInFlight, 2);
+    if (dollarsInFlight.toString().includes('-')) {
+      dollarsInFlight = -Math.abs(dollarsInFlight);
+    } else {
+      dollarsInFlight = Math.abs(dollarsInFlight);
+    } */
   }
 
   // let dollarsInFlight;
