@@ -28,7 +28,12 @@ const getSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
 const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequestedTime) => {
   const hospitalBedsForSevereCases = totalHospitalBeds * (35 / 100);
   const hospitalBedsFraction = hospitalBedsForSevereCases - severeCasesByRequestedTime;
-  const [hospitalBedsByRequestedTime] = hospitalBedsFraction.toString().split('.');
+  let hospitalBedsByRequestedTime;
+  if (hospitalBedsFraction.toString().includes('.')) {
+    [hospitalBedsByRequestedTime] = hospitalBedsFraction.toString().split('.');
+  } else {
+    hospitalBedsByRequestedTime = hospitalBedsFraction;
+  }
   // console.log(totalHospitalBeds, severeCasesByRequestedTime, hospitalBedsByRequestedTime);
   return hospitalBedsByRequestedTime;
 };
