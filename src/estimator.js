@@ -67,6 +67,11 @@ const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   let casesForVentilatorsByRequestedTime;
   if (casesForVentilatorsFraction.toString().includes('.')) {
     [casesForVentilatorsByRequestedTime] = casesForVentilatorsFraction.toString().split('.');
+    if (casesForVentilatorsFraction.toString().includes('-')) {
+      casesForVentilatorsByRequestedTime = -Math.abs(casesForVentilatorsByRequestedTime);
+    } else {
+      casesForVentilatorsByRequestedTime = Math.abs(casesForVentilatorsByRequestedTime);
+    }
   } else {
     casesForVentilatorsByRequestedTime = casesForVentilatorsFraction;
   }
@@ -92,6 +97,12 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   let dollarsInFlight;
   if (dollarsInFlightFraction.toString().includes('.')) {
     [dollarsInFlight] = dollarsInFlightFraction.toString().split('.');
+
+    if (dollarsInFlightFraction.toString().includes('-')) {
+      dollarsInFlight = -Math.abs(dollarsInFlight);
+    } else {
+      dollarsInFlight = Math.abs(dollarsInFlight);
+    }
   } else {
     dollarsInFlight = dollarsInFlightFraction;
   }
