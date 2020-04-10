@@ -84,18 +84,18 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   averageDailyIncomePopulation, periodType, timeToElapse) => {
   const numberOfDays = getNumberOfDays(periodType, timeToElapse);
 
-  const dollarsInFlightFraction = (
+  let dollarsInFlight = (
     infectionsByRequestedTime * averageDailyIncomePopulation
   ) * averageDailyIncomeInUSD * numberOfDays;
 
-  /* if (dollarsInFlight.toString().includes('.')) {
-   // const multiplier = 10 ** 1;
-   //dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
-   // dollarsInFlight = dollarsInFlight.toPrecision()
-  } */
+  if (dollarsInFlight.toString().includes('.')) {
+    const multiplier = 10 ** 1;
+    dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
+    [dollarsInFlight] = dollarsInFlight.toString().split('.');
+  }
 
-  let dollarsInFlight;
-  if (dollarsInFlightFraction.toString().includes('.')) {
+  // let dollarsInFlight;
+  /* if (dollarsInFlightFraction.toString().includes('.')) {
     [dollarsInFlight] = dollarsInFlightFraction.toString().split('.');
 
     if (dollarsInFlightFraction.toString().includes('-')) {
@@ -105,7 +105,7 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
     }
   } else {
     dollarsInFlight = dollarsInFlightFraction;
-  }
+  } */
   // console.log('Dollars - ', dollarsInFlight);
 
   return dollarsInFlight;
