@@ -7,6 +7,7 @@ const getInfectionsByRequestedTime = (currentlyInfected, days) => {
 
 
 const covid19ImpactEstimator = (data) => {
+  const input = data;
   const impact = {};
   const severeImpact = {};
   // Challenge 1
@@ -20,9 +21,9 @@ const covid19ImpactEstimator = (data) => {
   );
 
   return {
-    data: {},
-    impact: {},
-    severeImpact: {}
+    data: input,
+    impact,
+    severeImpact
   };
 };
 
