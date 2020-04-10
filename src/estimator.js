@@ -79,14 +79,14 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   averageDailyIncomePopulation, periodType, timeToElapse) => {
   const numberOfDays = getNumberOfDays(periodType, timeToElapse);
 
-  let dollarsInFlight = (
+  const dollarsInFlight = (
     infectionsByRequestedTime * averageDailyIncomePopulation
   ) * averageDailyIncomeInUSD * numberOfDays;
 
-  if (dollarsInFlight.toString().includes('.')) {
+  /* if (dollarsInFlight.toString().includes('.')) {
     const multiplier = 10 ** 1;
     dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
-  }
+  } */
 
   // console.log('Dollars - ', dollarsInFlight);
 
