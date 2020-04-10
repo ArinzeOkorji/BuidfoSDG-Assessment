@@ -1,4 +1,4 @@
-const getInfectionsByRequestedTime = (currentlyInfected, periodType, timeToElapse) => {
+const getNumberOfDays = (periodType, timeToElapse) => {
   let numberOfDays;
   if (periodType === 'days') {
     numberOfDays = timeToElapse;
@@ -7,6 +7,12 @@ const getInfectionsByRequestedTime = (currentlyInfected, periodType, timeToElaps
   } else if (periodType === 'months') {
     numberOfDays = timeToElapse * 30;
   }
+
+  return numberOfDays;
+};
+
+const getInfectionsByRequestedTime = (currentlyInfected, periodType, timeToElapse) => {
+  const numberOfDays = getNumberOfDays(periodType, timeToElapse);
 
   const powerDivision = (numberOfDays / 3);
   let power;
@@ -37,6 +43,26 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
   }
   // console.log(totalHospitalBeds, severeCasesByRequestedTime, hospitalBedsByRequestedTime);
   return hospitalBedsByRequestedTime;
+};
+
+const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
+  const casesForICUByRequestedTime = infectionsByRequestedTime * (5 / 100);
+  return casesForICUByRequestedTime;
+};
+
+const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
+  const casesForVentilatorsByRequestedTime = infectionsByRequestedTime * (2 / 100);
+  return casesForVentilatorsByRequestedTime;
+};
+
+const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
+  averageDailyIncomePopulation, periodType, timeToElapse) => {
+  const numberOfDays = getNumberOfDays(periodType, timeToElapse);
+
+  const dollarsInFlight = (
+    infectionsByRequestedTime * averageDailyIncomePopulation
+  ) * averageDailyIncomeInUSD * numberOfDays;
+  return dollarsInFlight;
 };
 
 /* const mockData = {
@@ -85,6 +111,27 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.hospitalBedsByRequestedTime = getHospitalBedsByRequestedTime(
     data.totalHospitalBeds, severeImpact.severeCasesByRequestedTime
   );
+
+  // Challenge 3
+  impact.casesForICUByRequestedTime = getCasesForICUByRequestedTime(
+    data.infectionsByRequestedTime
+  );
+  impact.casesForICUByRequestedTime = getCasesForVentilatorsByRequestedTime(
+    data.infectionsByRequestedTime
+  );
+  impact.dollarInFlight = getDollarsInFlight(data.infectionsByRequestedTime,
+    data.averageDailyIncomeInUSD, data.averageDailyIncomePopulation,
+    data.periodType, data.timeToElapse);
+
+  severeImpact.casesForICUByRequestedTime = getCasesForICUByRequestedTime(
+    data.infectionsByRequestedTime
+  );
+  severeImpact.casesForICUByRequestedTime = getCasesForVentilatorsByRequestedTime(
+    data.infectionsByRequestedTime
+  );
+  severeImpact.dollarInFlight = getDollarsInFlight(data.infectionsByRequestedTime,
+    data.averageDailyIncomeInUSD, data.averageDailyIncomePopulation,
+    data.periodType, data.timeToElapse);
 
   return {
     data: input,
