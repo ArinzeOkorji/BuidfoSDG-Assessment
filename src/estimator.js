@@ -28,9 +28,23 @@ const getSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
 const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequestedTime) => {
   const hospitalBedsForSevereCases = totalHospitalBeds * (35 / 100);
   const hospitalBedsByRequestedTime = hospitalBedsForSevereCases - severeCasesByRequestedTime;
+  // console.log(totalHospitalBeds, severeCasesByRequestedTime, hospitalBedsByRequestedTime);
   return hospitalBedsByRequestedTime;
 };
 
+/* const mockData = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+}; */
 
 const covid19ImpactEstimator = (data) => {
   const input = data;
@@ -54,7 +68,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime
   );
   impact.hospitalBedsByRequestedTime = getHospitalBedsByRequestedTime(
-    data.totalHospitalBeds, data.severeCasesByRequestedTime
+    data.totalHospitalBeds, impact.severeCasesByRequestedTime
   );
 
 
@@ -62,7 +76,7 @@ const covid19ImpactEstimator = (data) => {
     severeImpact.infectionsByRequestedTime
   );
   severeImpact.hospitalBedsByRequestedTime = getHospitalBedsByRequestedTime(
-    data.totalHospitalBeds, data.severeCasesByRequestedTime
+    data.totalHospitalBeds, severeImpact.severeCasesByRequestedTime
   );
 
   return {
@@ -73,4 +87,5 @@ const covid19ImpactEstimator = (data) => {
 };
 
 
-export default covid19ImpactEstimator;
+// covid19ImpactEstimator(mockData);
+export default covid19ImpactEstimator();
