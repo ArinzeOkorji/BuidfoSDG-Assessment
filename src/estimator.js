@@ -75,23 +75,30 @@ const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   return casesForVentilatorsFraction;
 };
 
-/* const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
+const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   averageDailyIncomePopulation, periodType, timeToElapse) => {
   const numberOfDays = getNumberOfDays(periodType, timeToElapse);
 
-  const dollarsInFlight = (
+  const dollarsInFlightFraction = (
     infectionsByRequestedTime * averageDailyIncomePopulation
   ) * averageDailyIncomeInUSD * numberOfDays;
 
-  // if (dollarsInFlight.toString().includes('.')) {
-  //  const multiplier = 10 ** 1;
-  //  dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
-  // }
+  /* if (dollarsInFlight.toString().includes('.')) {
+   // const multiplier = 10 ** 1;
+   //dollarsInFlight = Math.round(dollarsInFlight * multiplier) / multiplier;
+   // dollarsInFlight = dollarsInFlight.toPrecision()
+  } */
 
+  let dollarsInFlight;
+  if (dollarsInFlightFraction.toString().includes('.')) {
+    [dollarsInFlight] = dollarsInFlightFraction.toString().split('.');
+  } else {
+    dollarsInFlight = dollarsInFlightFraction;
+  }
   // console.log('Dollars - ', dollarsInFlight);
 
   return dollarsInFlight;
-}; */
+};
 
 /* const mockData = {
   region: {
@@ -147,9 +154,9 @@ const covid19ImpactEstimator = (data) => {
   impact.casesForVentilatorsByRequestedTime = getCasesForVentilatorsByRequestedTime(
     impact.infectionsByRequestedTime
   );
-  /*  impact.dollarsInFlight = getDollarsInFlight(impact.infectionsByRequestedTime,
-     data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation,
-     data.periodType, data.timeToElapse); */
+  impact.dollarsInFlight = getDollarsInFlight(impact.infectionsByRequestedTime,
+    data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation,
+    data.periodType, data.timeToElapse);
 
   severeImpact.casesForICUByRequestedTime = getCasesForICUByRequestedTime(
     severeImpact.infectionsByRequestedTime
@@ -157,9 +164,9 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.casesForVentilatorsByRequestedTime = getCasesForVentilatorsByRequestedTime(
     severeImpact.infectionsByRequestedTime
   );
-  /* severeImpact.dollarsInFlight = getDollarsInFlight(severeImpact.infectionsByRequestedTime,
+  severeImpact.dollarsInFlight = getDollarsInFlight(severeImpact.infectionsByRequestedTime,
     data.region.avgDailyIncomeInUSD, data.region.avgDailyIncomePopulation,
-    data.periodType, data.timeToElapse); */
+    data.periodType, data.timeToElapse);
 
   return {
     data: input,
