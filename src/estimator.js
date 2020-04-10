@@ -51,20 +51,20 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
 
 const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
   const casesForICUFraction = infectionsByRequestedTime * (5 / 100);
-  let casesForICUByRequestedTime;
-  if (casesForICUFraction.toString().includes('.')) {
-    [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
-  } else {
-    casesForICUByRequestedTime = casesForICUFraction;
-  }
+  /*  let casesForICUByRequestedTime;
+   if (casesForICUFraction.toString().includes('.')) {
+     [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
+   } else {
+     casesForICUByRequestedTime = casesForICUFraction;
+   } */
   // console.log('ICUs - ', casesForICUByRequestedTime);
-  return casesForICUByRequestedTime;
-  // return casesForICUFraction;
+  // return casesForICUByRequestedTime;
+  return casesForICUFraction;
 };
 
 const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   const casesForVentilatorsFraction = infectionsByRequestedTime * (2 / 100);
-  let casesForVentilatorsByRequestedTime;
+  /* let casesForVentilatorsByRequestedTime;
   if (casesForVentilatorsFraction.toString().includes('.')) {
     [casesForVentilatorsByRequestedTime] = casesForVentilatorsFraction.toString().split('.');
     if (casesForVentilatorsFraction.toString().includes('-')) {
@@ -74,10 +74,10 @@ const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
     }
   } else {
     casesForVentilatorsByRequestedTime = casesForVentilatorsFraction;
-  }
+  } */
   // console.log('Ventilators - ', casesForVentilatorsByRequestedTime);
-  return casesForVentilatorsByRequestedTime;
-  // return casesForVentilatorsFraction;
+  // return casesForVentilatorsByRequestedTime;
+  return casesForVentilatorsFraction;
 };
 
 const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
