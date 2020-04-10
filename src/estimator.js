@@ -28,15 +28,15 @@ const getSevereCasesByRequestedTime = (infectionsByRequestedTime) => {
 const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequestedTime) => {
   const hospitalBedsForSevereCases = totalHospitalBeds * (35 / 100);
   const hospitalBedsFraction = hospitalBedsForSevereCases - severeCasesByRequestedTime;
-  /* let hospitalBedsByRequestedTime;
-  if (hospitalBedsFraction.toString().includes('.')) {
+  const hospitalBedsByRequestedTime = Math.floor(hospitalBedsFraction);
+  /* if (hospitalBedsFraction.toString().includes('.')) {
     [hospitalBedsByRequestedTime] = hospitalBedsFraction.toString().split('.');
   } else {
     hospitalBedsByRequestedTime = hospitalBedsFraction;
   } */
   // console.log(totalHospitalBeds, severeCasesByRequestedTime, hospitalBedsByRequestedTime);
-  // return hospitalBedsByRequestedTime;
-  return hospitalBedsFraction;
+  return hospitalBedsByRequestedTime;
+  // return hospitalBedsFraction;
 };
 
 /* const mockData = {
