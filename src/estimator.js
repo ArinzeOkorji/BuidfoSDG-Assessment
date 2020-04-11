@@ -1,12 +1,3 @@
-const populationInput = document.querySelector('[data-population]');
-const timeToElapseInput = document.querySelector('[data-time-to-elapse]');
-const reportedCasesInput = document.querySelector('[data-reported-cases]');
-const totalHospitalBedsInput = document.querySelector('[data-total-hospital-beds]');
-const periodTypeInput = document.querySelector('[data-period-type]');
-const submitBtn = document.querySelector('[data-go-to-estimate]');
-
-// submitBtn();
-
 const getNumberOfDays = (periodType, timeToElapse) => {
   let numberOfDays;
   if (periodType === 'days') {
@@ -205,23 +196,3 @@ const covid19ImpactEstimator = (data) => {
 
 // covid19ImpactEstimator(mockData);
 export default covid19ImpactEstimator;
-
-const arrangeDataValues = () => {
-  const population = populationInput.value;
-  const timeToElapse = timeToElapseInput.value;
-  const reportedCases = reportedCasesInput.value;
-  const totalHospitalBeds = totalHospitalBedsInput.value;
-  const periodType = periodTypeInput.value;
-
-  const data = {
-    population,
-    timeToElapse,
-    reportedCases,
-    totalHospitalBeds,
-    periodType
-  };
-
-  covid19ImpactEstimator(data);
-};
-
-submitBtn.addEventListener('click', arrangeDataValues);
