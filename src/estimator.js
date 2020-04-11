@@ -64,7 +64,7 @@ const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
 
 const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
   const casesForVentilatorsFraction = infectionsByRequestedTime * (2 / 100);
-  /* let casesForVentilatorsByRequestedTime;
+  let casesForVentilatorsByRequestedTime;
   if (casesForVentilatorsFraction.toString().includes('.')) {
     [casesForVentilatorsByRequestedTime] = casesForVentilatorsFraction.toString().split('.');
     if (casesForVentilatorsFraction.toString().includes('-')) {
@@ -74,10 +74,10 @@ const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
     }
   } else {
     casesForVentilatorsByRequestedTime = casesForVentilatorsFraction;
-  } */
+  }
   // console.log('Ventilators - ', casesForVentilatorsByRequestedTime);
-  // return casesForVentilatorsByRequestedTime;
-  return casesForVentilatorsFraction;
+  return casesForVentilatorsByRequestedTime;
+  // return casesForVentilatorsFraction;
 };
 
 const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
