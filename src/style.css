@@ -58,7 +58,7 @@ form {
 }
 
 .btn-container button {
-    color: #fff;
+    /* color: #fff; */
     font-weight: bold;
     background-color: rgb(30, 190, 16);
     border: none;
