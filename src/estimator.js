@@ -195,4 +195,4 @@ const covid19ImpactEstimator = (data) => {
 
 
 // covid19ImpactEstimator(mockData);
-module.exports = covid19ImpactEstimator;
+export default covid19ImpactEstimator;
