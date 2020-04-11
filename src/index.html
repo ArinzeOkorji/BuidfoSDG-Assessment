@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Estimate the impact of COVID-19">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Impact Estimator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>COVID-19 Impact Estimator</h1>
+        <form>
+            <div class="input-container">
+                <label for="population">Population</label>
+                <input id="population" type="number" data-population>
+            </div>
+            <div class="input-container">
+                <label for="timeToElapse">Time to elapse</label>
+                <input id="timeToElapse" type="number" data-time-to-elapse>
+            </div>
+            <div class="input-container">
+                <label for="reportedCases">Reported cases</label>
+                <input id="reportedCases" type="number" data-reported-cases>
+            </div>
+            <div class="input-container">
+                <label for="totalHospitalBeds">Total hospital beds</label>
+                <input id="totalHospitalBeds" type="number" data-total-hospital-beds>
+            </div>
+            <div class="input-container">
+                <label for="periodType">Period type</label>
+                <select name="periodType" id="periodType" data-period-type>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button type="button" data-go-estimate>Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="estimator.js"></script>
+    <script>
+        const populationInput = document.querySelector('[data-population]');
+        const timeToElapseInput = document.querySelector('[data-time-to-elapse]');
+        const reportedCasesInput = document.querySelector('[data-reported-cases]');
+        const totalHospitalBedsInput = document.querySelector('[data-total-hospital-beds]');
+        const periodTypeInput = document.querySelector('[data-period-type]');
+        const submitBtn = document.querySelector('[data-go-estimate]');
+
+
+        const arrangeDataValues = () => {
+            const population = populationInput.value;
+            const timeToElapse = timeToElapseInput.value;
+            const reportedCases = reportedCasesInput.value;
+            const totalHospitalBeds = totalHospitalBedsInput.value;
+            const periodType = periodTypeInput.value;
+
+            const data = {
+                population,
+                timeToElapse,
+                reportedCases,
+                totalHospitalBeds,
+                periodType
+            };
+
+            covid19ImpactEstimator(data);
+        };
+
+        submitBtn.addEventListener('click', arrangeDataValues);
+    </script>
+</body>
+
+</html>
