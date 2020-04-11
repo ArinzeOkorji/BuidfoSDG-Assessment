@@ -131,7 +131,7 @@ const getDollarsInFlight = (infectionsByRequestedTime, averageDailyIncomeInUSD,
   totalHospitalBeds: 678874
 }; */
 
-const covid19ImpactEstimator = (data) => {
+exports.covid19ImpactEstimator = (data) => {
   const input = data;
   const impact = {};
   const severeImpact = {};
@@ -195,4 +195,4 @@ const covid19ImpactEstimator = (data) => {
 
 
 // covid19ImpactEstimator(mockData);
-export default covid19ImpactEstimator;
+// export default covid19ImpactEstimator;
