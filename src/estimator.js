@@ -51,15 +51,15 @@ const getHospitalBedsByRequestedTime = (totalHospitalBeds, severeCasesByRequeste
 
 const getCasesForICUByRequestedTime = (infectionsByRequestedTime) => {
   const casesForICUFraction = infectionsByRequestedTime * (5 / 100);
-  /*  let casesForICUByRequestedTime;
-   if (casesForICUFraction.toString().includes('.')) {
-     [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
-   } else {
-     casesForICUByRequestedTime = casesForICUFraction;
-   } */
+  let casesForICUByRequestedTime;
+  if (casesForICUFraction.toString().includes('.')) {
+    [casesForICUByRequestedTime] = casesForICUFraction.toString().split('.');
+  } else {
+    casesForICUByRequestedTime = casesForICUFraction;
+  }
   // console.log('ICUs - ', casesForICUByRequestedTime);
-  // return casesForICUByRequestedTime;
-  return casesForICUFraction;
+  return casesForICUByRequestedTime;
+  // return casesForICUFraction;
 };
 
 const getCasesForVentilatorsByRequestedTime = (infectionsByRequestedTime) => {
